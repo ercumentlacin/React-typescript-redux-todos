@@ -1,4 +1,7 @@
 import * as React from "react";
+import { useDispatch } from "react-redux";
+import { setCheck } from "../../features/todoSlice";
+
 import { Wrapper } from "./styles";
 
 interface Props {
@@ -8,12 +11,17 @@ interface Props {
 }
 
 const TodoItem = ({ name, id, done }: Props) => {
-  const handleChange = () => {};
+  const dispatch = useDispatch();
+
+  const handleCheck = () => {
+    dispatch(setCheck(id));
+  };
+
   return (
     <Wrapper>
       <input
         checked={done}
-        onChange={handleChange}
+        onChange={handleCheck}
         type="checkbox"
         name=""
         id=""
